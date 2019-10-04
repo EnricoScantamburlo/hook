@@ -1,0 +1,29 @@
+#!/usr/bin/ruby
+
+puts "Hook Running"
+
+z40="0000000000000000000000000000000000000000"
+
+STDIN.each_line do |line|
+    puts "LINE: #{line}"
+    pieces = line.split(/\s+/)
+    local_ref = pieces[0]
+    local_sha = pieces[1]
+    remote_ref = pieces[2]
+    remote_sha= pieces[3]
+
+#    puts "local_ref: #{local_ref}"
+#    puts "local_sha: #{local_sha}"
+#    puts "remote_ref: #{remote_ref}"
+#    puts "remote_sha: #{remote_sha}"
+
+    if local_sha == z40 then
+      #Delete branch
+      puts "Cannot delete branch"
+      exit 1
+    elsif remote_sha == z40 then
+      #Create new branch
+      puts "Cannot create branch"
+      exit 1
+    end
+end
